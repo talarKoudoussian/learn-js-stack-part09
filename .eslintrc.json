@@ -1,0 +1,25 @@
+{
+    "extends": [
+        "airbnb",
+        "plugin:flowtype/recommended"
+    ],
+    "plugins": [
+        "flowtype",
+        "compat"
+    ],
+    "settings": {
+        "polyfills": ["fetch"]
+    },
+    "rules": {
+        "semi": [2, "never"],
+        "no-unexpected-multiline": 2,
+        "indent": 1,
+        "react/jsx-indent": 1,
+        "react/jsx-indent-props": 1,
+        "compat/compat": 2
+    },
+    "env": {
+        "jest": true,
+        "browser": true
+    }
+}
