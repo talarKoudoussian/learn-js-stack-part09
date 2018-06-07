@@ -1,0 +1,16 @@
+{
+  "name": "learn-js-stack-part09",
+  "scripts": {
+  },
+  "env": {
+    "NPM_CONFIG_PRODUCTION": "false"
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
