@@ -29,25 +29,29 @@ const preloadedState = window.__PRELOADED_STATE__
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(
-  combineReducers({ hello: helloReducer }),
-  { hello: Immutable.fromJS(preloadedState.hello) },
-  composeEnhancers(applyMiddleware(thunkMiddleware)),
+    combineReducers({ hello: helloReducer }),
+    { hello: Immutable.fromJS(preloadedState.hello) },
+    composeEnhancers(applyMiddleware(thunkMiddleware)),
 )
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
 
 const wrapApp = (AppComponent, reduxStore) => (
-  <Provider store={reduxStore}>
-    <BrowserRouter>
-      <AppContainer>
-        <AppComponent />
-      </AppContainer>
-    </BrowserRouter>
-  </Provider>
+    <Provider store={reduxStore}>
+        <BrowserRouter>
+            <AppContainer>
+                <AppComponent />
+            </AppContainer>
+        </BrowserRouter>
+    </Provider>
 )
 
+if (!(rootEl instanceof Element)) {
+    throw new Error('invalid type')
+}
 ReactDOM.render(wrapApp(App, store), rootEl)
 
+// flow-disable-next-line
 if (module.hot) {
     // flow-disable-next-line
     module.hot.accept('../shared/app', () => {

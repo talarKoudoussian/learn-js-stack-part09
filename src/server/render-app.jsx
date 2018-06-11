@@ -12,23 +12,23 @@ import { APP_CONTAINER_CLASS, JSS_SSR_CLASS, STATIC_PATH, WDS_PORT } from '../sh
 import { isProd } from '../shared/util'
 
 const renderApp = (location: string, plainPartialState: ?Object, routerContext: ?Object = {}) => {
-  const store = initStore(plainPartialState)
-  const sheets = new SheetsRegistry()
-  // eslint-disable-next-line function-paren-newline
-  const appHtml = ReactDOMServer.renderToString(
-  <Provider store={store}>
-    <StaticRouter location={location} context={routerContext}>
-      <JssProvider registry={sheets}>
-        <App />
-      </JssProvider>
-    </StaticRouter>
-  </Provider>)
+    const store = initStore(plainPartialState)
+    const sheets = new SheetsRegistry()
+    // eslint-disable-next-line function-paren-newline
+    const appHtml = ReactDOMServer.renderToString(
+        <Provider store={store}>
+            <StaticRouter location={location} context={routerContext}>
+                <JssProvider registry={sheets}>
+                    <App />
+                </JssProvider>
+            </StaticRouter>
+        </Provider>)
 
-  /** Helmet.rewind() must come after ReactDOMServer.renderToString() */
-  const head = Helmet.rewind()
+    /** Helmet.rewind() must come after ReactDOMServer.renderToString() */
+    const head = Helmet.rewind()
 
-  return (
-    `<!doctype html>
+    return (
+        `<!doctype html>
     <html>
       <head>
         ${head.title}
@@ -44,7 +44,7 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
         <script src="${isProd ? STATIC_PATH : `http://localhost:${WDS_PORT}/dist`}/js/bundle.js"></script>
       </body>
     </html>`
-  )
+    )
 }
 
 export default renderApp

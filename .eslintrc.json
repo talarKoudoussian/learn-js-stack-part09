@@ -13,9 +13,9 @@
     "rules": {
         "semi": [2, "never"],
         "no-unexpected-multiline": 2,
-        "indent": 1,
-        "react/jsx-indent": 1,
-        "react/jsx-indent-props": 1,
+        "indent": [1, 4],
+        "react/jsx-indent": [1, 4, { "SwitchCase": 4 }],
+        "react/jsx-indent-props": [1, 4],
         "compat/compat": 2
     },
     "env": {
